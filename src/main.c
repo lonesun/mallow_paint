@@ -40,9 +40,9 @@ int main(void)
     bgSetDisable(2);
 
     // Draw welcome screen text
-    consoleDrawText(8, 8,  "=== MALLOW PAINT ===");
-    consoleDrawText(6, 12, "SNES ENGINE INITIALIZED");
-    consoleDrawText(6, 16, "READY FOR PIXEL MAGIC!");
+    consoleDrawText(6, 8,  "=== MALLOW PAINT ===");
+    consoleDrawText(4, 12, "SNES ENGINE INITIALIZED");
+    consoleDrawText(4, 15, "READY FOR PIXEL MAGIC!");
     drawTrackLabel(MUSIC_BACKGROUND);
 
     // Turn screen brightness on (full intensity)

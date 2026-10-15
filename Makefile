@@ -5,6 +5,10 @@ ifeq ($(strip $(PVSNESLIB_HOME)),)
 $(error "Please set the PVSNESLIB_HOME environment variable to your PVSnesLib directory (e.g., C:/pvsneslib)")
 endif
 
+# Impulse Tracker (.it) modules compiled into the SNESMod soundbank (Bank 5)
+AUDIOFILES := res/mallow_title.it res/pollen8.it
+export SOUNDBANK := res/soundbank
+
 # ROM and Game Information (Used in SNES Cartridge Header)
 export ROMNAME := mallow_paint
 export ROMTITLE := MALLOW PAINT
@@ -14,8 +18,17 @@ export CFLAGS := -Iinclude
 # Include standard PVSnesLib rules and toolchain targets
 include ${PVSNESLIB_HOME}/devkitsnes/snes_rules
 
-.PHONY: all clean
+# Soundbank conversion flags (-s: soundbank mode, -b 5: place in ROM Bank 5)
+SMCONVFLAGS := -s -o $(SOUNDBANK) -V -b 5
 
-all: $(OBJS) $(ROMNAME).sfc
+.PHONY: all musics clean
 
-clean: cleanBuildRes cleanRom cleanGfx cleanLogs
+musics: $(SOUNDBANK).obj
+
+# Ensure res/soundbank.h is generated before C sources are compiled
+$(CFILES:.c=.ps): $(SOUNDBANK).asm
+
+all: musics $(OBJS) $(ROMNAME).sfc
+
+clean: cleanBuildRes cleanRom cleanGfx cleanAudio cleanLogs
+

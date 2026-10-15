@@ -1,0 +1,38 @@
+{
+    // =========================================================================
+    // VS Code IntelliSense Configuration for PVSnesLib (SNES C Development)
+    // =========================================================================
+    "version": 4,
+    "env": {
+        // PVSnesLib library headers and devkitsnes toolchain includes
+        "pvsneslibIncludes": [
+            "C:/pvsneslib/pvsneslib/include/**",
+            "C:/pvsneslib/devkitsnes/include/**"
+        ],
+        // Project local include folders
+        "projectIncludes": [
+            "${workspaceFolder}/src/**",
+            "${workspaceFolder}/include/**",
+            "${workspaceFolder}/res/**"
+        ]
+    },
+    "configurations": [
+        {
+            "name": "SNES (PVSnesLib)",
+            "includePath": [
+                "${projectIncludes}",
+                "${pvsneslibIncludes}"
+            ],
+            "defines": [
+                "__SNES__",
+                "__TCC__"
+            ],
+            "cStandard": "c99",
+            "intelliSenseMode": "windows-gcc-x86",
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            }
+        }
+    ]
+}

@@ -1,0 +1,49 @@
+{
+    // =========================================================================
+    // VS Code Build and Emulator Tasks for PVSnesLib (SNES)
+    // =========================================================================
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build SNES ROM",
+            "type": "shell",
+            "command": "make",
+            "args": ["all"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "clear": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Clean SNES Build",
+            "type": "shell",
+            "command": "make",
+            "args": ["clean"],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Run in Snes9x Emulator",
+            "type": "shell",
+            "command": "snes9x",
+            "args": ["${workspaceFolder}/mallow_paint.sfc"],
+            "dependsOn": "Build SNES ROM",
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

@@ -1,0 +1,35 @@
+{
+    "version": 4,
+    "env": {
+        // Custom composed path lists:
+        "myPvsneslibIncludes": [
+            "C:/pvsneslib/pvsneslib/include/**",
+            "C:/pvsneslib/devkitsnes/include/**"
+        ],
+        "myProjectIncludes": [
+            "${workspaceFolder}",
+            "${workspaceFolder}/src/**",
+            "${workspaceFolder}/res/**"
+        ]
+    },
+    "configurations": [
+        {
+            "name": "SNES (PVSnesLib)",
+            // Compose the include paths from the custom env variables above:
+            "includePath": [
+                "${myProjectIncludes}",
+                "${myPvsneslibIncludes}"
+            ],
+            "defines": [
+                "__SNES__",
+                "__TCC__"
+            ],
+            "cStandard": "c99",
+            "intelliSenseMode": "windows-gcc-x86",
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            }
+        }
+    ]
+}
